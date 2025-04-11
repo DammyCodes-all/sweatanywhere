@@ -74,7 +74,7 @@ async function fetchQuote(){
     try {
         let content, author
         do {
-            const response = await fetch('http://api.quotable.io/random?tags=motivational|inspirational')
+            const response = await fetch('https://api.quotable.io/random?tags=motivational|inspirational')
             if(response.status !== 200){
                 throw new Error(`${response.status}`)
             }
