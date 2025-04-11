@@ -72,19 +72,20 @@ $('#prev').click(()=>{
 // fetch and show motivational quotes
 async function fetchQuote(){
     try {
-        let content, author
-        do {
-            const response = await fetch('https://zenquotes.io/api/random')
+            const response = await fetch('http://api.quotable.io/random?tags=motivational|inspirational')
             if(response.status !== 200){
                 throw new Error(`${response.status}`)
             }
             const data = await response.json()
-            content = data[0].q
-            author = data[0].a
-        } while (content.length >= 70)
-        
-        writeText(`" ${content} "`, 'quote')
-        writeText(`-- ${author}`, 'author')
+            console.log(data)
+             let content = data.content
+            let author = data.author
+            if (content.length <= 80){
+                writeText(`" ${content} "`, 'quote')
+                writeText(`-- ${author}`, 'author')
+        }else{
+            fetchQuote()
+        } 
     } catch (error) {
         writeText(`Something went wrong: ${error}`, 'quote')
     }
