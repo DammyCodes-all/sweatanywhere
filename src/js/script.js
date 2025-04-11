@@ -69,26 +69,30 @@ $('#prev').click(()=>{
     showbg(num)
 })
 
+// Motivational quotes collection
+const motivationalQuotes = [
+    { text: "The only bad workout is the one that didn't happen.", author: "Unknown" },
+    { text: "No matter how slow you go, you are still lapping everybody on the couch.", author: "Unknown" },
+    { text: "What seems impossible today will one day become your warm-up.", author: "Unknown" },
+    { text: "The only person you are destined to become is the person you decide to be.", author: "Ralph Waldo Emerson" },
+    { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+    { text: "The harder you work for something, the greater you'll feel when you achieve it.", author: "Unknown" },
+    { text: "Your body can stand almost anything. It's your mind that you have to convince.", author: "Unknown" },
+    { text: "Strength does not come from the body. It comes from the will.", author: "Gandhi" },
+    { text: "Don't wish it were easier, wish you were better.", author: "Jim Rohn" },
+    { text: "The difference between try and triumph is just a little umph!", author: "Marvin Phillips" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "Fall seven times, stand up eight.", author: "Japanese Proverb" },
+    { text: "Tomorrow's battle is won during today's practice.", author: "Unknown" },
+    { text: "The pain you feel today will be the strength you feel tomorrow.", author: "Unknown" },
+    { text: "Strive for progress, not perfection.", author: "Unknown" }
+];
+
 // fetch and show motivational quotes
-async function fetchQuote(){
-    try {
-            const response = await fetch('http://api.quotable.io/random?tags=motivational|inspirational')
-            if(response.status !== 200){
-                throw new Error(`${response.status}`)
-            }
-            const data = await response.json()
-            console.log(data)
-             let content = data.content
-            let author = data.author
-            if (content.length <= 80){
-                writeText(`" ${content} "`, 'quote')
-                writeText(`-- ${author}`, 'author')
-        }else{
-            fetchQuote()
-        } 
-    } catch (error) {
-        writeText(`Something went wrong: ${error}`, 'quote')
-    }
+function fetchQuote() {
+    const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+    writeText(`"${randomQuote.text}"`, 'quote');
+    writeText(`-- ${randomQuote.author}`, 'author');
 }
 
 let used = false
