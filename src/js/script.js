@@ -74,13 +74,13 @@ async function fetchQuote(){
     try {
         let content, author
         do {
-            const response = await fetch('https://api.quotable.io/random?tags=motivational|inspirational')
+            const response = await fetch('https://zenquotes.io/api/random')
             if(response.status !== 200){
                 throw new Error(`${response.status}`)
             }
             const data = await response.json()
-            content = data.content
-            author = data.author
+            content = data[0].q
+            author = data[0].a
         } while (content.length >= 70)
         
         writeText(`" ${content} "`, 'quote')
