@@ -71,21 +71,21 @@ $('#prev').click(()=>{
 
 // Motivational quotes collection
 const motivationalQuotes = [
-    { text: "The only bad workout is the one that didn't happen.", author: "Unknown" },
-    { text: "No matter how slow you go, you are still lapping everybody on the couch.", author: "Unknown" },
-    { text: "What seems impossible today will one day become your warm-up.", author: "Unknown" },
+    { text: "The only bad workout is the one that didn't happen.", author: "Yoo smith" },
+    { text: "No matter how slow you go, you are still lapping everybody on the couch.", author: "Will cooper" },
+    { text: "What seems impossible today will one day become your warm-up.", author: "Aristotle" },
     { text: "The only person you are destined to become is the person you decide to be.", author: "Ralph Waldo Emerson" },
     { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
-    { text: "The harder you work for something, the greater you'll feel when you achieve it.", author: "Unknown" },
-    { text: "Your body can stand almost anything. It's your mind that you have to convince.", author: "Unknown" },
+    { text: "The harder you work for something, the greater you'll feel when you achieve it.", author: "Albert Einstein" },
+    { text: "Your body can stand almost anything. It's your mind that you have to convince.", author: "Smith" },
     { text: "Strength does not come from the body. It comes from the will.", author: "Gandhi" },
     { text: "Don't wish it were easier, wish you were better.", author: "Jim Rohn" },
     { text: "The difference between try and triumph is just a little umph!", author: "Marvin Phillips" },
     { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
     { text: "Fall seven times, stand up eight.", author: "Japanese Proverb" },
     { text: "Tomorrow's battle is won during today's practice.", author: "Unknown" },
-    { text: "The pain you feel today will be the strength you feel tomorrow.", author: "Unknown" },
-    { text: "Strive for progress, not perfection.", author: "Unknown" }
+    { text: "The pain you feel today will be the strength you feel tomorrow.", author: "javaScript" },
+    { text: "Strive for progress, not perfection.", author: "Dammycodes-all" }
 ];
 
 // fetch and show motivational quotes
