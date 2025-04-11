@@ -5,6 +5,7 @@ AOS.init({
     easing: 'ease',
     once: true
 });
+
 let isStarted = false
 
 // background change
@@ -69,43 +70,25 @@ $('#prev').click(()=>{
 })
 
 // fetch and show motivational quotes
-// function fetchQuote(){
-//     fetch('http://api.quotable.io/random?tags=motivational|inspirational')
-//     .then((response) => {
-//         console.log(response)
-//         if(response.status != 200){
-//             throw new Error(`404 Error`)
-//         }
-//         return response.json()
-//     })
-//     .then((data) => {
-//         console.log(data)
-//         const content = data.content
-//         const author = data.author
-//         if(content.length < 70){
-//             writeText(`" ${content} "` , 'quote')
-//             writeText( `-- ${author}` , 'author')
-//         }else{
-//             fetchQuote()
-//         }
-//     })
-//     .catch(err => console.error(`Something went wrong: ${err}`))
-// }
-
 async function fetchQuote(){
-   const response = await fetch('http://api.quotable.io/random?tags=motivational|inspirational')
-   const data = await response.json()
-   const content = data.content
-    const author = data.author
-    if(content.length < 70){
-        writeText(`" ${content} "` , 'quote')
-        writeText( `-- ${author}` , 'author')
-    }else{
-        fetchQuote()
-     }
+    try {
+        let content, author
+        do {
+            const response = await fetch('http://api.quotable.io/random?tags=motivational|inspirational')
+            if(response.status !== 200){
+                throw new Error(`${response.status}`)
+            }
+            const data = await response.json()
+            content = data.content
+            author = data.author
+        } while (content.length >= 70)
+        
+        writeText(`" ${content} "`, 'quote')
+        writeText(`-- ${author}`, 'author')
+    } catch (error) {
+        writeText(`Something went wrong: ${error}`, 'quote')
+    }
 }
-
-
 
 let used = false
 if(!used){
